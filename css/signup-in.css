@@ -1,0 +1,79 @@
+header{
+	height: 20px;
+}
+
+div#cover {
+	display: none;
+	z-index: 2;
+	background: #000;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+}
+
+div#signBox {
+	display: none;
+	position: relative;
+	z-index: 3;
+	text-align: center;
+	margin: 150px auto 0px auto;
+	width: 500px;
+	height: 500px;
+	background: #FFF;
+	color: #000;
+}
+
+button.linkStyle{
+	background:none;
+	border:none;
+	color:#ff6600;
+
+	padding:0;
+	font: inherit;
+	cursor: pointer;
+}
+
+div#signBox form{
+	text-align: left;
+	
+	padding-top: 50px;
+}
+
+div#signBox li{
+	list-style: none;
+	padding: 10px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+div#signBox label {
+	display:inline;
+	font-weight: bold;
+	text-align: left;
+}
+
+div#signBox select{
+	float: right;
+	padding-right: 25;
+	bottom:0px;
+}
+
+div#signBox input{
+	float: right;
+	padding-right: 25;
+	bottom:0px;
+}
+
+#loginButton{
+	float: right;
+
+}
+#close{
+	float: right;
+	padding-right: 5px;
+	font-size: 25px;
+	font-weight: bold;
+}
