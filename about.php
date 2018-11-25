@@ -7,7 +7,7 @@
    <body>
 	
     <?php include 'templates/header.php'; ?>
-	<?php include 'templates/sqllogin.php'; ?>
+	<?php include 'templates/sq.php'; ?>
 	
 	
 	<article>

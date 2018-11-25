@@ -8,7 +8,7 @@
     
 
     protected function connect(){
-        $fileh = fopen("./../DBP.txt", "r");
+        $fileh = fopen("./../../../DBP.txt", "r"); //  ./ sql/ cs340/ public
        
         $this->dbhost = 'classmysql.engr.oregonstate.edu';
         $this->dbname = 'cs340_klinglo';

@@ -6,7 +6,7 @@
    <body>
 	
     <?php include 'templates/header.php'; ?>
-	<?php include 'templates/sqllogin.php'; ?>
+	<?php include 'templates/sql.php'; ?>
 	
 	<article>
 	<img src="images/fire.jpg"/>
