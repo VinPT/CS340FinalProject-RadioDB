@@ -53,7 +53,7 @@
         <h4>Already a member <button class = "linkStyle" onmousedown="formSwitch()">Login</button></h4>
         <h4>All fealds are required.</h4>
 
-        <form id="signupForm" action="templates/signup.php" method="post" onsubmit="return(validateSignupForm());">
+        <form id="signupForm" action="signup.php" method="post" onsubmit="return(validateSignupForm());">
           <ul>
             <li><label>DJName: </label><input type="text" name="djName"></li>
             <li><label>Legal Name: </label><input type="text" name="legalName"></li>
