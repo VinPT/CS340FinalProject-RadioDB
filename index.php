@@ -7,7 +7,6 @@
    <body>
 
     <?php include 'templates/header.php'; ?>
-	<?php include 'templates/sql.php'; ?>
 
   <?php 
   $pass = 'rasmuslerdorf';
@@ -18,6 +17,10 @@
   } else {
     echo('False \n');
   }
+
+  $DBCObject = new Dbh();
+
+  $DBCObject->loginUser('Caspen Go', '!monolith108');
   //echo password_hash('rasmuslerdorf', PASSWORD_DEFAULT)."\n";
   
   ?>
