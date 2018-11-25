@@ -7,7 +7,6 @@
     ?>
     <body>
       <?php include 'templates/header.php'; ?>
-      <?php include 'templates/sqllogin.php'; ?>
 
       <?php
 
@@ -48,7 +47,9 @@
           $recoveryA = $_POST['recoveryA'];
       		if(empty($errorMessage))
               {
-                
+                $DBCObject = new Dbh();
+
+                $DBCObject->createUser($djName, $legalName, $pass, $city, $recoveryQ, $recoveryA);
                 exit();
               }
           echo $errorMessage;
