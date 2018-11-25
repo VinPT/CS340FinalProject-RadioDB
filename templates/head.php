@@ -5,6 +5,8 @@
       <?php
         session_start();
         ini_set('display_errors', 'On');
+
+        include 'templates/sql.php';
       ?>
 
       <meta charset="UTF-8">

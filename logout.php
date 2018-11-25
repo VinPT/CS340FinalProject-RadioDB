@@ -13,7 +13,7 @@
       session_destroy();
       ?>
       <h5>you are now logged out</h5>
-	<meta http-equiv="refresh" content="1;index.php" />
+	      <meta http-equiv="refresh" content="1;index.php" />
         <?php include 'templates/footer.php'; ?>
       </body>
     </html>
