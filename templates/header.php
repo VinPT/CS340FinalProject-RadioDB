@@ -2,16 +2,27 @@
   <noscript>
        Errors may occur if javascript is not enabled.
   </noscript>
-  <header>
-  <?php  $activeNav = basename($_SERVER['PHP_SELF']);
-    if($activeNav == 'login.php'||$activeNav == 'logout.php'){
 
-        }
+
+  <header>
+  <?php  
+    // save current link as active 
+    $activeNav = basename($_SERVER['PHP_SELF']);
+
+    // set Logged in as false if we dont have a loggedin variable.
+    if (!isset($_SESSION['loggedin'])) $_SESSION['loggedin'] = 0;
+
+    // dont do anything if we are on login or logout page
+    if($activeNav == 'login.php'||$activeNav == 'logout.php'){}
+
+    // if not logged in display the login button
     else if ( !$_SESSION["loggedin"]) {
       echo '<button id = "loginButton" class = "linkStyle" onmousedown="toggleOverlay()">Login/Signup</button>';
     }
+
+    // else we are logged in display DJ name and add the logout button
     else{
-      echo '<label id = uname> ' . $_SESSION["firstname"] . ' ' . $_SESSION["lastname"].' </label>';
+      echo '<label id = uname> ' . $_SESSION["djName"] .' </label>';
       echo '<a id = "loginButton" class = "linkStyle" href="logout.php" >Logout</a>';
       echo session_status();
 
@@ -19,20 +30,24 @@
   </header>
 
   <?php  
-  if (!isset($_SESSION['loggedin'])) $_SESSION['loggedin'] = 0;
+  
   ?>
   <div class="background">
   <nav>
   
     <ul>
-	<li><a <?php if($activeNav == 'index.php') { echo 'class="active"';} else { echo '';} ?> href="index.php">Home</a></li>
-	
+    <!-- display home page to every one-->
+    <li><a <?php if($activeNav == 'index.php') { echo 'class="active"';} else { echo '';} ?> href="index.php">Home</a></li>
+  
+  
+  <!-- display User only pages-->
 	<?php if (true == (isset($_SESSION['loggedin']) && true == $_SESSION['loggedin'])) { 
-      echo '<li><a '; if($activeNav == 'createevent.php') { echo 'class="active"';} else { echo '';} echo 'href="createevent.php">Create Event</a></li>';
-      echo '<li><a '; if($activeNav == 'eeinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="eeinfo.php"> Edit Events</a></li>';
-	  //echo '<li><a '; if($activeNav == 'euinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="euinfo.php"> Edit Userinfo</a></li>';
-	}else{} ?>  
-	  
+      echo '<li><a '; if($activeNav == 'createshow.php') { echo 'class="active"';} else { echo '';} echo 'href="createevent.php">Update Show</a></li>';
+      echo '<li><a '; if($activeNav == 'eeinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="eeinfo.php"> Edit Show Info</a></li>';
+	    echo '<li><a '; if($activeNav == 'euinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="euinfo.php"> Edit User Info</a></li>';
+  }else{} ?>  
+  
+	  <!-- display other pages designed for mass consumption-->
       <li><a <?php if($activeNav == 'about.php') { echo 'class="active"';} else { echo '';} ?> href="about.php">About</a></li>
       <li><a <?php if($activeNav == 'help.php') { echo 'class="active"';} else { echo '';} ?> href="help.php"> Help</a></li>
     </ul>
@@ -72,7 +87,7 @@
         <h4>Not a member yet <button class = "linkStyle" onmousedown="formSwitch()">Signup</button></h4>
         <h4>Forget your password recover it <a href="recover.php" >here</a></h4>
 
-        <form id="signinForm" action="templates/login.php" method="post" onsubmit="return(validateSigninForm());">
+        <form id="signinForm" action="login.php" method="post" onsubmit="return(validateSigninForm());">
           <ul>
             <li><label>DJName: </label><input type="text" name="djname"></li>
             <li><label>Password: </label><input type="password" name="password"></li>
