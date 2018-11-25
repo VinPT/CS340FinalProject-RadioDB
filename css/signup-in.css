@@ -1,6 +1,9 @@
 header{
 	height: 20px;
 }
+header label{
+	color: #ffffff;
+}
 
 div#cover {
 	display: none;
