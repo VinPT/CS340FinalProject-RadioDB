@@ -1,7 +1,3 @@
-<?php session_start();
-setcookie("Login", true);?>
-<!DOCTYPE html>
-  <html>
 
     <?php
       $title = 'Login';
@@ -10,57 +6,43 @@ setcookie("Login", true);?>
     <body>
 
       <?php include 'templates/header.php'; ?>
-      <?php include 'templates/sqllogin.php'; ?>
       <?php
 
+        if(empty($_POST['djname']))
+              {
+      			$errorMessage .= "<li>You must enter a username!</li>";
+          }
+          if(empty($_POST['password']))
+              {
+      			$errorMessage .= "<li>You must enter a password to login!</li>";
+      		}
 
-        $varUsername =  $_POST['username'];
+        $vardjName =  $_POST['djname'];
         $varPassword =  $_POST['password'];
-        $varPassword = sha1($varPassword);
 
-        $sql = "SELECT `first_name`, `last_name` FROM `users-h4` WHERE username = ".PrepSQL($varUsername)." AND password = ".PrepSQL($varPassword);
-        $ans = mysql_query($sql);
+        if(empty($errorMessage))
+          {
+            $DBCObject = new Dbh();
 
+            $success = $DBCObject->loginUser($vardjName, $varPassword);
 
-
-        if (1 == mysql_num_rows($ans)){
-
-          setcookie("Login", true);
-
-          $row = mysql_fetch_array($ans);
-
-          $_SESSION["loggedin"] = true;
-          $_SESSION["firstname"] = $row["first_name"];
-          $_SESSION["lastname"] = $row["last_name"];
-          $_SESSION["username"] = PrepSQL($varUsername);
-
-          echo " You have logged in as ".$_SESSION['firstname']." ".$_SESSION['lastname'];
-
-        }
-		
-
-
-        mysql_close($mysql_handle);
-
-
-        function PrepSQL($value)
-        {
-            // Stripslashes
-            if(get_magic_quotes_gpc())
-            {
-                $value = stripslashes($value);
+            if ($success == TRUE){
+    
+              $_SESSION['loggedin'] = TRUE;
+              $_SESSION['djName'] = $_POST['djname'];
+    
+             // echo ("<li> You have logged in as ".$_SESSION['djName'].".</li>"]);
+    
             }
-
-            // Quote
-            $value = "'" . mysql_real_escape_string($value) . "'";
-
-            return($value);
+            else{
+             // echo ("<li>Password was not correct. We ask that you try again or use the password recovery tool.</li>");
+            }
+             
         }
-
 
 
       ?>
-	<meta http-equiv="refresh" content="1;index.php" />  
+	    <meta http-equiv="refresh" content="1;index.php" />  
 
 
 
