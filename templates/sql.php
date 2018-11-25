@@ -60,12 +60,9 @@
 
         $stmt->execute();
 
-        $dbPass_hash = $stmt->fetchColumn();#not to be used with numbers
-        echo ($dbPass_hash); 
-        #echo ($password);
+        $dbPass_hash = $stmt->fetchColumn();#not to be used with numbers /\/\/\/\ only one elemet returned so this works
 
         if (password_verify($password, $dbPass_hash)) {
-            echo('True \n');
             $success = true;
         }
         
