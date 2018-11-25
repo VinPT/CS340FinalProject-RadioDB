@@ -30,7 +30,7 @@
         
     }
 
-    public function creatUser($djname, $legalName, $password, $city, $recoveryQuestion, $recoveryAnswer){
+    public function createUser($djname, $legalName, $password, $city, $recoveryQuestion, $recoveryAnswer){
         $success = false;
         $DBH = connect();
         $stmt = $dbh->prepare("INSERT INTO DJ (DJName, LegalName, Password_hash, City, RecoveryQ, RecoveryA_hash) VALUES (:djName, :legalName, :password_hash, :city, :recoveryQ, :recoveryA_hash)");
