@@ -8,7 +8,7 @@
     
 
     protected function connect(){
-        $fileh = fopen("./../../../DBP.txt", "r"); //  ./ sql/ cs340/ public
+        $fileh = fopen("./../../DBP.txt", "r"); //  ./ sql/ cs340/ public
        
         $this->dbhost = 'classmysql.engr.oregonstate.edu';
         $this->dbname = 'cs340_klinglo';
@@ -32,8 +32,8 @@
 
     public function createUser($djname, $legalName, $password, $city, $recoveryQuestion, $recoveryAnswer){
         $success = false;
-        $DBH = connect();
-        $stmt = $dbh->prepare("INSERT INTO DJ (DJName, LegalName, Password_hash, City, RecoveryQ, RecoveryA_hash) VALUES (:djName, :legalName, :password_hash, :city, :recoveryQ, :recoveryA_hash)");
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("INSERT INTO DJ (DJName, LegalName, Password_hash, City, RecoveryQ, RecoveryA_hash) VALUES (:djName, :legalName, :password_hash, :city, :recoveryQ, :recoveryA_hash)");
         
         $stmt->bindParam(':djName', $djname);
         $stmt->bindParam(':legalName', $legalName);
@@ -46,12 +46,36 @@
         $stmt->bindParam(':recoveryA_hash', $recoveryA_h);
 
         $stmt->execute();
-
-        $DBH=NULL;
         
         return $success;
 
     }
+
+    public function loginUser($djname, $password){
+        $success = false;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT Password_hash FROM `DJ` WHERE DJName = ? LIMIT 1');
+        
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+
+        $dbPass_hash = $stmt->fetchColumn();#not to be used with numbers
+        echo ($dbPass_hash); 
+        #echo ($password);
+
+        if (password_verify($password, $dbPass_hash)) {
+            echo('True \n');
+            $success = true;
+        }
+        
+        return $success;
+
+    }
+
+    
+
+    
 
   }
 
