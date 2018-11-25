@@ -57,9 +57,9 @@
           <ul>
             <li><label>DJName: </label><input type="text" name="djName"></li>
             <li><label>Legal Name: </label><input type="text" name="legalName"></li>
-            <li><label>Password: </label><input type="text" name="password"></li>
+            <li><label>Password: </label><input type="password" name="password"></li>
             <li><label>Reenter Password: </label><input type="password" name="password2"></li>
-            <li><label>City of Residence: </label><input type="password" name="city"></li>
+            <li><label>City of Residence: </label><input type="text" name="city"></li>
 			      <li><label>Select recovery question: </label><input type="text" name="recoveryQ"></li>
             <li><label>Recovery Answer: </label><input type="text" name="recoveryA"></li>
           </ul>
