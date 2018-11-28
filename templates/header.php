@@ -8,10 +8,10 @@
   <?php  
     // save current link as active 
     $activeNav = basename($_SERVER['PHP_SELF']);
-
+    
     // set Logged in as false if we dont have a loggedin variable.
     if (!isset($_SESSION['loggedin'])) $_SESSION['loggedin'] = 0;
-
+    //echo ($_SESSION['loggedin']);
     // dont do anything if we are on login or logout page
     if($activeNav == 'login.php'||$activeNav == 'logout.php'){}
 
@@ -43,7 +43,7 @@
   <!-- display User only pages-->
 	<?php if (true == (isset($_SESSION['loggedin']) && true == $_SESSION['loggedin'])) { 
       echo '<li><a '; if($activeNav == 'createshow.php') { echo 'class="active"';} else { echo '';} echo 'href="createevent.php">Update Show</a></li>';
-      echo '<li><a '; if($activeNav == 'eeinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="eeinfo.php"> Edit Show Info</a></li>';
+      echo '<li><a '; if($activeNav == 'esinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="eeinfo.php"> Edit Show Info</a></li>';
 	    echo '<li><a '; if($activeNav == 'euinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="euinfo.php"> Edit User Info</a></li>';
   }else{} ?>  
   

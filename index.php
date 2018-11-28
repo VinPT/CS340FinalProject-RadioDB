@@ -1,5 +1,5 @@
 <?php
-	
+    session_start();
 
     $title = 'Home';
     include 'templates/head.php';
@@ -17,11 +17,6 @@
   } else {
     echo('False \n');
   }
-
-  $DBCObject = new Dbh();
-
-  $DBCObject->loginUser('Caspen Go', '!monolith108');
-  //echo password_hash('rasmuslerdorf', PASSWORD_DEFAULT)."\n";
   
   ?>
 		<div class="container">
