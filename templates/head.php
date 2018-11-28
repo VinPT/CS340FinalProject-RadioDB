@@ -3,10 +3,12 @@
     <head>
 
       <?php session_start();
-      
+        
+        
         ini_set('display_errors', 'On');
 
         include 'templates/sql.php';
+        $DBCObject = new Dbh();
       ?>
 
       <meta charset="UTF-8">
