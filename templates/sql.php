@@ -144,10 +144,61 @@
         return $result;
     }
 
+	public function newShow($djname, $title, $stationID, $startTime, $endTime){
+    
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("INSERT INTO Show :djname, :title, :sID, :startTime, :endTime");
+        
+        $stmt->bindParam(':sID', $stationID);
+        $stmt->bindParam(':djname', $djname);
+        $stmt->bindParam(':sID', $sID);
+        $stmt->bindParam(':startTime', $startTime);
+        $stmt->bindParam(':endTime', $endTime);
 
+        $stmt->execute();
+        return $success;
+
+    }
+	
+	public function deleteShow($title){
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('DELETE FROM Show WHERE StationManager = :title');
+        
+        $stmt->bindParam(":title", $title);
+
+        $stmt->execute();
+
+        return TRUE;
+    }
     
 
+    public function newSong($showtitle, $title, $artist, $startTime){
     
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("INSERT INTO Song :showtitle, :title, :artist, :startTime");
+        
+        $stmt->bindParam(':showtitle', $showtitle);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':artist', $artist);
+        $stmt->bindParam(':startTime', $startTime);
+
+        $stmt->execute();
+        return $success;
+
+    }
+	
+	public function deleteSong($title){
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('DELETE FROM Song WHERE Title = :title');
+        
+        $stmt->bindParam(":title", $title);
+
+        $stmt->execute();
+
+        return TRUE;
+    }
 
   }
 
