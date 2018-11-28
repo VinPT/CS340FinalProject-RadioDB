@@ -8,14 +8,14 @@
       <?php include 'templates/header.php'; ?>
       <?php
 
-        if(empty($_POST['djname']))
+        /*if(empty($_POST['djname']))
               {
       			$errorMessage .= "<li>You must enter a username!</li>";
           }
           if(empty($_POST['password']))
               {
       			$errorMessage .= "<li>You must enter a password to login!</li>";
-      		}
+      		}*/
 
         $vardjName =  $_POST['djname'];
         $varPassword =  $_POST['password'];

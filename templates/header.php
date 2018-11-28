@@ -93,7 +93,7 @@
       <div id="login" >
         <h2>Login</h2>
         <h4>Not a member yet <button class = "linkStyle" onmousedown="formSwitch()">Signup</button></h4>
-        <h4>Forget your password recover it <a href="recover.php" >here</a></h4>
+        <!--<h4>Forget your password recover it <a href="recover.php" >here</a></h4>-->
 
         <form id="signinForm" action="login.php" method="post" onsubmit="return(validateSigninForm());">
           <ul>

@@ -10,7 +10,7 @@
 
       <?php
 
-      		if(empty($_POST['djName']))
+      		/*if(empty($_POST['djName']))
               {
       			$errorMessage = "<li>You forgot to enter a username!</li>";
       		}
@@ -37,7 +37,7 @@
           if(empty($_POST['recoveryA']))
               {
       			$errorMessage .= "<li>You forgot to enter your recovery Answer!</li>";
-      		}
+      		}*/
 
           $djName = $_POST['djName'];
       		$legalName = $_POST['legalName'];
