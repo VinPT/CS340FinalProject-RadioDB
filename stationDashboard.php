@@ -45,7 +45,7 @@
             <li><label>Station Name: </label><input type="text" name="sID" placeholder= ""required></li>
             <li><label>Frequency: </label><input type="text" name="frequency"placeholder= ""required></li>
             <li><label>City: </label><input type="text" name="city"placeholder= ""required></li>
-            <li><label>Format: </label><input type="text" name="format"placeholder= ""required></li>
+            <li><label>Format: </label><input type="text" name="format"placeholder= ""></li>
             </ul>
             <input type="submit" name="formSubmit" value="Create Radio Station"/>
         </form>');
@@ -58,7 +58,7 @@
             <li><label>Station Name: </label><input type="text" name="sID" placeholder= "'.$stationInfo->sID.'" required ></li>
             <li><label>Frequency: </label><input type="text" name="frequency"placeholder= "'.$stationInfo->Frequency.'" required ></li>
             <li><label>City: </label><input type="password" name="city"placeholder= "'.$stationInfo->City.'" required ></li>
-            <li><label>Format: </label><input type="password" name="format"placeholder= "'.$stationInfo->Format.'" required ></li>
+            <li><label>Format: </label><input type="password" name="format"placeholder= "'.$stationInfo->Format.'"></li>
             </ul>
             <input type="submit" name="formSubmit" value="Update Radio Station"/>
             <a href="delRadioStation.php">Delete Radio Station</a>
