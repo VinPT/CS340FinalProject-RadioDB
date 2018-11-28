@@ -78,13 +78,13 @@
 
         <form id="signupForm" action="signup.php" method="post" onsubmit="return(validateSignupForm());">
           <ul>
-            <li><label>DJName: </label><input type="text" name="djName"></li>
-            <li><label>Legal Name: </label><input type="text" name="legalName"></li>
-            <li><label>Password: </label><input type="password" name="password"></li>
-            <li><label>Reenter Password: </label><input type="password" name="password2"></li>
-            <li><label>City of Residence: </label><input type="text" name="city"></li>
-			      <li><label>Select recovery question: </label><input type="text" name="recoveryQ"></li>
-            <li><label>Recovery Answer: </label><input type="text" name="recoveryA"></li>
+            <li><label>DJName: </label><input type="text" name="djName" required ></li>
+            <li><label>Legal Name: </label><input type="text" name="legalName" required ></li>
+            <li><label>Password: </label><input type="password" name="password" required ></li>
+            <li><label>Reenter Password: </label><input type="password" name="password2" required ></li>
+            <li><label>City of Residence: </label><input type="text" name="city" required ></li>
+			      <li><label>Select recovery question: </label><input type="text" name="recoveryQ" required ></li>
+            <li><label>Recovery Answer: </label><input type="text" name="recoveryA" required ></li>
           </ul>
           <input type="submit" name="formSubmit" value="Signup"/>
         </form>
@@ -93,12 +93,12 @@
       <div id="login" >
         <h2>Login</h2>
         <h4>Not a member yet <button class = "linkStyle" onmousedown="formSwitch()">Signup</button></h4>
-        <h4>Forget your password recover it <a href="recover.php" >here</a></h4>
+        <!--<h4>Forget your password recover it <a href="recover.php" >here</a></h4>-->
 
         <form id="signinForm" action="login.php" method="post" onsubmit="return(validateSigninForm());">
           <ul>
-            <li><label>DJName: </label><input type="text" name="djname"></li>
-            <li><label>Password: </label><input type="password" name="password"></li>
+            <li><label>DJName: </label><input type="text" name="djname" required ></li>
+            <li><label>Password: </label><input type="password" name="password" required ></li>
           </ul>
           <input type="submit" name="formSubmit" value="Signin"/>
         </form>

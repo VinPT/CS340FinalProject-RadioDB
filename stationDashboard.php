@@ -47,10 +47,10 @@
         echo('
         <form id="stationDash" action="stationDashboard.php" method="post" >
             <ul>
-            <li><label>Station Name: </label><input type="text" name="sID" placeholder= ""></li>
-            <li><label>Frequency: </label><input type="text" name="frequency"placeholder= ""></li>
-            <li><label>City: </label><input type="text" name="city"placeholder= ""></li>
-            <li><label>Format: </label><input type="text" name="format"placeholder= ""></li>
+            <li><label>Station Name: </label><input type="text" name="sID" placeholder= ""required></li>
+            <li><label>Frequency: </label><input type="text" name="frequency"placeholder= ""required></li>
+            <li><label>City: </label><input type="text" name="city"placeholder= ""required></li>
+            <li><label>Format: </label><input type="text" name="format"placeholder= ""required></li>
             </ul>
             <input type="submit" name="formSubmit" value="Create Radio Station"/>
         </form>');
@@ -62,10 +62,11 @@
         echo('
         <form id="stationDash" action="stationDashboard.php" method="post" >
             <ul>
-            <li><label>Station Name: </label><input type="text" name="sID" placeholder= "'.$stationInfo->sID.'"></li>
-            <li><label>Frequency: </label><input type="text" name="frequency"placeholder= "'.$stationInfo->Frequency.'"></li>
-            <li><label>City: </label><input type="text" name="city"placeholder= "'.$stationInfo->City.'"></li>
-            <li><label>Format: </label><input type="text" name="format"placeholder= "'.$stationInfo->Format.'"></li>
+
+            <li><label>Station Name: </label><input type="text" name="sID" placeholder= "'.$stationInfo->sID.'" required ></li>
+            <li><label>Frequency: </label><input type="text" name="frequency"placeholder= "'.$stationInfo->Frequency.'" required ></li>
+            <li><label>City: </label><input type="password" name="city"placeholder= "'.$stationInfo->City.'" required ></li>
+            <li><label>Format: </label><input type="password" name="format"placeholder= "'.$stationInfo->Format.'" required ></li>
             </ul>
             <input type="submit" name="formSubmit" value="Update Radio Station"/>
             <a href="delRadioStation.php">Delete Radio Station</a>
