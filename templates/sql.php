@@ -183,7 +183,7 @@
     
         $success = TRUE;
         $DBH = $this->connect();
-        $stmt = $DBH->prepare("INSERT INTO Song :showtitle, :title, :artist, :startTime");
+        $stmt = $DBH->prepare("INSERT INTO `Song` (`ShowTitle`, `Title`, `Artist`, `StartTime`) VALUES (:showtitle, :title, :artist, :startTime);");
         
         $stmt->bindParam(':showtitle', $showtitle);
         $stmt->bindParam(':title', $title);
@@ -195,7 +195,7 @@
 	
 	public function deleteSong($title){
         $DBH = $this->connect();
-        $stmt = $DBH->prepare('DELETE FROM Song WHERE Title = :title');
+        $stmt = $DBH->prepare('DELETE FROM `Song` WHERE Title = :title');
         
         $stmt->bindParam(":title", $title);
         $stmt->execute();

@@ -8,7 +8,7 @@
       <?php include 'templates/header.php'; ?>
       <?php
 
-           $DBCObject->deleteShow($_POST['Title'] );
+           $DBCObject->deleteSong($_POST['Title'] );
 
       ?>
         <meta http-equiv="refresh" content="1;index.php" /> 
