@@ -31,7 +31,7 @@
     }
 
     public function createUser($djname, $legalName, $password, $city, $recoveryQuestion, $recoveryAnswer){
-        $success = false;
+        $success = TRUE;
         $DBH = $this->connect();
         $stmt = $DBH->prepare("INSERT INTO DJ (DJName, LegalName, Password_hash, City, RecoveryQ, RecoveryA_hash) VALUES (:djName, :legalName, :password_hash, :city, :recoveryQ, :recoveryA_hash)");
         
@@ -69,6 +69,81 @@
         return $success;
 
     }
+
+    public function newRadioStation($djname, $stationID, $frequency, $city, $format){
+    
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("INSERT INTO RadioStation (sID, Frequency, City, Format, StationManager) VALUES (:sID, :frequency, :city, :format, :stationManager)");
+        
+        $stmt->bindParam(':sID', $stationID);
+        $stmt->bindParam(':frequency', $frequency);
+        $stmt->bindParam(':city', $city);
+        $stmt->bindParam(':format', $format);
+        $stmt->bindParam(':stationManager', $djname);
+
+        $stmt->execute();
+        return $success;
+
+    }
+    public function updateRadioStation($djname, $stationID, $frequency, $city, $format){
+
+        $result = False;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('UPDATE RadioStation SET sID = ?, Frequency = ?, City = ?, Format = ? WHERE StationManager = ?');
+        
+        $stmt->bindParam(1, $stationID);
+        $stmt->bindParam(2, $frequency);
+        $stmt->bindParam(3, $city);
+        $stmt->bindParam(4, $format);
+        $stmt->bindParam(5, $djname);
+
+        $stmt->execute();
+
+        return $result;
+    }
+
+    public function getStationInfo($djname){
+    
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT * FROM RadioStation WHERE StationManager = ?');
+
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+
+        $dbo = $stmt->fetchObject();
+        echo ($dbo->Frequency);
+        return  $dbo;
+
+    }
+
+    public function deleteRadioStation($djname){
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('DELETE FROM RadioStation WHERE StationManager = ?');
+        
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+
+        return TRUE;
+    }
+
+    public function isStationMaster($djname){
+        $result = False;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT COUNT(*) FROM `RadioStation` WHERE StationManager = ?');
+        
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+
+        $result = $stmt->fetchColumn();
+        
+        return $result;
+    }
+
 
     
 
