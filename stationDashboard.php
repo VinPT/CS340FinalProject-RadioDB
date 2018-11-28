@@ -40,7 +40,7 @@
             <li><label>Station Name: </label><input type="text" name="sID" placeholder= "'.$stationInfo->sID.'" required ></li>
             <li><label>Frequency: </label><input type="text" name="frequency"placeholder= "'.$stationInfo->Frequency.'" required ></li>
             <li><label>City: </label><input type="password" name="city"placeholder= "'.$stationInfo->City.'" required ></li>
-            <li><label>Format: </label><input type="password" name="format"placeholder= "'.$stationInfo->Format.'" required ></li>
+            <li><label>Format: </label><input type="password" name="format"placeholder= "'.$stationInfo->Format.'"></li>
             </ul>
             <input type="submit" name="formSubmit" value="Signup"/>
         </form>');
