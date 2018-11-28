@@ -114,7 +114,6 @@
         $stmt->execute();
 
         $dbo = $stmt->fetchObject();
-        echo ($dbo->Frequency);
         return  $dbo;
 
     }
