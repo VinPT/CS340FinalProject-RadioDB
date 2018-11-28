@@ -5,12 +5,14 @@
     include 'templates/head.php';
    ?>
    <body>
+   <?php
+			include 'templates/header.php';
+	?>
 
 
   
 		<div class="container">
 		<?php
-			include 'templates/header.php';
 			ini_set('display_errors', 'On');
 			error_reporting(E_ALL | E_STRICT);
 			$myPostArgs = filter_input_array(INPUT_POST);
@@ -18,9 +20,8 @@
 			$db = 'cs340_klinglo';
 			$user = 'cs340_klinglo';
 			$charset = 'utf8mb4';
-			$fileh = fopen("db-password.txt", "r");
-			$pass = rtrim(fgets($fileh), "\n");
-			fclose($fileh);
+			$pass = 'EnThelatIGnAcKToRDOVEiekeSpECtIo';
+			
 			// define database source name for accessing MariaDB
 			$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 			$opt = array(
