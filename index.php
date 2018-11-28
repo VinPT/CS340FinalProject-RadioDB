@@ -9,6 +9,8 @@
     <?php include 'templates/header.php'; ?>
 
   <?php 
+
+  
   $pass = 'rasmuslerdorf';
   $notPass = 'lama';
   $hash = password_hash($pass, PASSWORD_DEFAULT);

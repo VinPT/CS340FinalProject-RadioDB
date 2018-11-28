@@ -70,6 +70,27 @@
 
     }
 
+    public function newRadioStation($djname, $password){
+    }
+    public function updateRadioStation($djname, $password){
+    }
+    public function deleteRadioStation($djname, $password){
+    }
+    public function isStationMaster($djname, $password){
+        $result = False;
+
+        $stmt = $DBH->prepare('SELECT COUNT(*) FROM `RadioStation` WHERE DJName = ?');
+        
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+
+        $dbPass_hash = $stmt->fetchColumn();
+
+        return $result;
+    }
+
+
     
 
     
