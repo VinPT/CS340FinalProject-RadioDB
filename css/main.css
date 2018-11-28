@@ -31,3 +31,7 @@ form {
 		font-family: 'Marcellus SC', serif;
 		position:relative;
 	}
+
+	Div.container{
+		padding-top: 40px;
+	}
