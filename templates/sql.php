@@ -170,6 +170,15 @@
         $stmt->bindParam(':djname', $djname);
 
         $stmt->execute();
+		echo "\t\t<table>\n\t\t\t<tr><td> DJ Name    </td> <td> Song Title    </td> <td> Station ID    </td> <td> Start Time   </td> <td> End Time    </td></tr>\n";
+		while($res = $stmt->fetchObject()){
+			echo "<tr>";
+			foreach ($res as $row) {
+				echo "<td>", $row, "</td> ";
+			}
+			echo "</tr>\n";
+		}
+		echo "</table>";
         return $success;
 
     }
