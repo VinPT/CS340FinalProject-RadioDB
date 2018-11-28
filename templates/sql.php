@@ -114,7 +114,7 @@
         $stmt->execute();
 
         $dbo = $stmt->fetchObject();
-        echo ($dbo->Frequency);
+        //echo ($dbo->Frequency);
         return  $dbo;
 
     }
@@ -148,20 +148,31 @@
     
         $success = TRUE;
         $DBH = $this->connect();
-        $stmt = $DBH->prepare("INSERT INTO Show :djname, :title, :sID, :startTime, :endTime");
+        $stmt = $DBH->prepare('INSERT INTO `Show` (`DJName`, `Title`, `sID`, `StartTime`, `EndTime`) VALUES (:djname, :title, :sID, :staTime,:enTime )');
         
-        $stmt->bindParam(':sID', $stationID);
         $stmt->bindParam(':djname', $djname);
-        $stmt->bindParam(':sID', $sID);
-        $stmt->bindParam(':startTime', $startTime);
-        $stmt->bindParam(':endTime', $endTime);
+        $stmt->bindParam(':title', $title);
+        $stmt->bindParam(':sID', $stationID);
+        $stmt->bindParam(':staTime', $startTime);
+        $stmt->bindParam(':enTime', $endTime);
+        $stmt->execute();
+        return $success;
+    }
+
+    public function getShowFromDJ($djname){
+    
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("SELECT * FROM `Show` WHERE DJName = :djname");
+        
+        $stmt->bindParam(':djname', $djname);
         $stmt->execute();
         return $success;
     }
 	
 	public function deleteShow($title){
         $DBH = $this->connect();
-        $stmt = $DBH->prepare('DELETE FROM Show WHERE StationManager = :title');
+        $stmt = $DBH->prepare('DELETE FROM `Show` WHERE `Show`.`Title` = :title');
         
         $stmt->bindParam(":title", $title);
         $stmt->execute();

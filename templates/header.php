@@ -43,7 +43,7 @@
   <!-- display User only pages-->
 	<?php if (true == (isset($_SESSION['loggedin']) && true == $_SESSION['loggedin'])) { 
       echo '<li><a '; if($activeNav == 'createshow.php') { echo 'class="active"';} else { echo '';} echo 'href="createevent.php">Update Show</a></li>';
-      echo '<li><a '; if($activeNav == 'esinfo.php') { echo 'class="active"';} else { echo '';} echo 'href="eeinfo.php"> Edit Show Info</a></li>';
+      echo '<li><a '; if($activeNav == 'showDashboard.php') { echo 'class="active"';} else { echo '';} echo 'href="showDashboard.php"> Edit Show Info</a></li>';
       echo '<li><a '; 
       if($activeNav == 'stationDashboard.php') { 
         echo 'class="active"';

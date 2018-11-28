@@ -14,7 +14,7 @@
     if (!$_SESSION['loggedin']){
         echo('<meta http-equiv="refresh" content="1;index.php" />');
     }
-    if (isset($_POST['sID'])){
+    if (isset($_POST['sid'])){
         $sID = $_POST['sid'];
         $title = $_POST['title'];
         $start = $_POST['start'];
@@ -23,7 +23,7 @@
  
             $DBCObject->newShow($djname, $title, $sID, $start, $end);
             unset($_POST);
-            echo('<meta http-equiv="refresh" content="1;stationDashboard.php" />') ;
+            echo('<meta http-equiv="refresh" content="1;showDashboard.php" />') ;
 
     }
     
@@ -36,18 +36,23 @@
  <?php      
     
         echo('
-        <form id="stationDash" action="stationDashboard.php" method="post" >
+        <form id="stationDash" action="showDashboard.php" method="post" >
             <ul>
             <li><label>Title: </label><input type="text" name="title" placeholder= ""required></li>
             <li><label>sID: </label><input type="text" name="sid"placeholder= ""required></li>
             <li><label>startTime: </label><input type="datetime-local" name="start"placeholder= ""required></li>
             <li><label>endTime: </label><input type="datetime-local" name="end"placeholder= ""required></li>
             </ul>
-            <input type="submit" name="formSubmit" value="Create Radio Station"/>
-            <a href="delshowStation.php">Delete Radio Station</a>
+            <input type="submit" name="formSubmit" value="Create Show"/>
+            
         </form>');
-    }
     
+        echo('<hr>');
+        echo('<form id="stationDash" action="delshow.php" method="post" >
+        <ul>
+        <li><label>Title </label><input type="text" name="Title" placeholder= ""required></li>
+        </ul>
+        <input type="submit" name="formSubmit" value="Del Show"/>');
  ?>
     
 		</div>
