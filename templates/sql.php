@@ -140,7 +140,7 @@
         $stmt->execute();
 
         $result = $stmt->fetchColumn();
-        echo ($result);
+        
         return $result;
     }
 
