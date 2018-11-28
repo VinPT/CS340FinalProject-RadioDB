@@ -25,13 +25,13 @@
             $DBCObject = new Dbh();
 
             $success = $DBCObject->loginUser($vardjName, $varPassword);
-
+           
             if ($success == TRUE){
     
               $_SESSION['loggedin'] = TRUE;
               $_SESSION['djName'] = $_POST['djname'];
-    
-             // echo ("<li> You have logged in as ".$_SESSION['djName'].".</li>"]);
+      
+              echo ("<li> You have logged in as ".$_SESSION['djName'].".</li>");
     
             }
             else{
@@ -42,8 +42,8 @@
 
 
       ?>
-	    <meta http-equiv="refresh" content="1;index.php" />  
-
+	      
+        <meta http-equiv="refresh" content="1;index.php" /> 
 
 
       <?php include 'templates/footer.php'; ?>
