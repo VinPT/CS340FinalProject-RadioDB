@@ -148,7 +148,7 @@
     
         $success = TRUE;
         $DBH = $this->connect();
-        $stmt = $DBH->prepare("INSERT INTO Show :djname, :title, :sID, :startTime, :endTime");
+        $stmt = $DBH->prepare("INSERT INTO `Show` :djname, :title, :sID, :startTime, :endTime");
         
         $stmt->bindParam(':sID', $stationID);
         $stmt->bindParam(':djname', $djname);
@@ -161,9 +161,22 @@
 
     }
 	
+	public function getShowFromDJ($djname){
+    
+        $success = TRUE;
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("SELECT * FROM `Show` WHERE DJName = :djname");
+        
+        $stmt->bindParam(':djname', $djname);
+
+        $stmt->execute();
+        return $success;
+
+    }
+	
 	public function deleteShow($title){
         $DBH = $this->connect();
-        $stmt = $DBH->prepare('DELETE FROM Show WHERE StationManager = :title');
+        $stmt = $DBH->prepare('DELETE FROM `Show` WHERE StationManager = :title');
         
         $stmt->bindParam(":title", $title);
 
