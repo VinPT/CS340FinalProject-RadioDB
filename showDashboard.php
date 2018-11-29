@@ -39,7 +39,9 @@
         <form id="stationDash" action="showDashboard.php" method="post" >
             <ul>
             <li><label>Title: </label><input type="text" name="title" placeholder= ""required></li>
-            <li><label>sID: </label><input type="text" name="sid"placeholder= ""required></li>
+            <li><label>sID: </label>');
+		getStationID($djname);
+		echo('</li>
             <li><label>startTime: </label><input type="datetime-local" name="start"placeholder= ""required></li>
             <li><label>endTime: </label><input type="datetime-local" name="end"placeholder= ""required></li>
             </ul>
@@ -50,7 +52,9 @@
         echo('<hr>');
         echo('<form id="stationDash" action="delshow.php" method="post" >
         <ul>
-        <li><label>Title </label><input type="text" name="Title" placeholder= ""required></li>
+        <li><label>Title </label>');
+		getShowTitle($djname);
+		echo('</li>
         </ul>
         <input type="submit" name="formSubmit" value="Del Show"/>');
  

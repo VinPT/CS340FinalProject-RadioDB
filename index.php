@@ -93,6 +93,7 @@
 			?>
 			<input type="text" name="SongTitle" placeholder="Song Title to Search for"/>
 			<input type="submit" name="Submit" value="Submit"/>
+			<input type="submit" name="Reset" value="Reset"/>
 		</form>
 	
 		<table>
