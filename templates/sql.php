@@ -179,9 +179,14 @@
     }
 
 	public function newShow($djname, $title, $stationID, $startTime, $endTime){
-    
-        $success = TRUE;
-        $DBH = $this->connect();
+		$DBH = $this->connect();
+		$stmt = $DBH->prepare('SELECT COUNT(*) FROM `Show` WHERE StartTime < :endTime AND EndTime > :endTime OR StartTime < :startTime AND EndTime > :startTime');
+        $stmt->bindParam(':startTime', $startTime);
+        $stmt->bindParam(':endTime', $endTime);
+		$stmt->execute();
+		if($stmt->fetchColumn())
+			"Scheduling Conflict";
+		
         $stmt = $DBH->prepare('INSERT INTO `Show` (`DJName`, `Title`, `sID`, `StartTime`, `EndTime`) VALUES (:djname, :title, :sID, :staTime,:enTime )');
         
         $stmt->bindParam(':djname', $djname);
@@ -190,7 +195,7 @@
         $stmt->bindParam(':staTime', $startTime);
         $stmt->bindParam(':enTime', $endTime);
         $stmt->execute();
-        return $success;
+        return TRUE;
     }
 
     public function getShowFromDJ($djname){
@@ -234,6 +239,12 @@
     
         $success = TRUE;
         $DBH = $this->connect();
+		$stmt = $DBH->prepare('SELECT COUNT(*) FROM `Show` WHERE Title = :showtitle AND StartTime < :startTime AND EndTime > :startTime');
+        $stmt->bindParam(':showtitle', $showtitle);
+        $stmt->bindParam(':startTime', $startTime);
+		$stmt->execute();
+		if(!($stmt->fetchColumn()))
+			"Song outside of " . $showtitle . "'s time range.";
         $stmt = $DBH->prepare("INSERT INTO `Song` (`ShowTitle`, `Title`, `Artist`, `StartTime`) VALUES (:showtitle, :title, :artist, :startTime);");
         
         $stmt->bindParam(':showtitle', $showtitle);
