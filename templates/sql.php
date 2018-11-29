@@ -119,9 +119,7 @@
 
     }
 	
-	public function getStationID($djname){
-		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
-        
+	public function getStationID($djname){        
         $DBH = $this->connect();
         $stmt = $DBH->prepare('SELECT sID FROM RadioStation WHERE StationManager = ?');
 
@@ -164,9 +162,7 @@
     }
 	
 	public function getShowTitle($djname){
-		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
-        
-        $DBH = $this->connect();
+		$DBH = $this->connect();
         $stmt = $DBH->prepare('SELECT Title FROM Show WHERE StationManager = ?');
 
         $stmt->bindParam(1, $djname);
@@ -218,9 +214,7 @@
     }
     
 	public function getSongTitle($djname){
-		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
-        
-        $DBH = $this->connect();
+		$DBH = $this->connect();
         $stmt = $DBH->prepare('SELECT Title FROM Song WHERE StationManager = ?');
 
         $stmt->bindParam(1, $djname);
