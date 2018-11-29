@@ -35,3 +35,7 @@ form {
 	Div.container{
 		padding-top: 80px;
 	}
+
+	td{
+		padding: 20px;
+	}

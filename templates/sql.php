@@ -197,15 +197,40 @@
         return $success;
     }
 
+
+
     public function getShowFromDJ($djname){
-    
-        $success = TRUE;
+
         $DBH = $this->connect();
-        $stmt = $DBH->prepare("SELECT * FROM `Show` WHERE DJName = :djname");
+        $stmt = $DBH->prepare("SELECT Title, sID, StartTime, EndTime FROM `Show` WHERE DJName = :djname");
         
         $stmt->bindParam(':djname', $djname);
         $stmt->execute();
-        return $success;
+        //$res = $stmt->fetchObject();
+
+        echo "<table><tr> <td> Show Name  </td> <td> Station ID    </td> <td> Start Time   </td> <td> End Time    </td></tr>\n";
+        while($res = $stmt->fetchObject()){
+            echo "<tr>";
+            foreach ($res as $row) {
+                echo "<td>", $row, "</td> ";
+            }
+            echo "</tr>\n";
+        }
+        echo"</table>";
+
+        return $res;
+    }
+
+    public function numShows($djname){
+
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare("SELECT COUNT(*) FROM `Show` WHERE DJName = :djname");
+        
+        $stmt->bindParam(':djname', $djname);
+        $stmt->execute();
+        $result = $stmt->fetchColumn();
+
+        return $result;
     }
 	
 	public function deleteShow($title){

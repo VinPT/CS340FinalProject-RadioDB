@@ -53,8 +53,19 @@
         <li><label>Title </label><input type="text" name="Title" placeholder= ""required></li>
         </ul>
         <input type="submit" name="formSubmit" value="Del Show"/>');
- ?>
-    
+ 
+
+        $shows = $DBCObject->getShowFromDJ($djname);
+        //$numShows = $DBCObject->numShows($djname);
+        //while($shows = $DBCObject->getShowFromDJ($djname)){
+        //    echo "<tr>";
+        //    foreach ($shows as $row) {
+        //        echo "<td>", $row, "</td> ";
+        //    }
+        //    echo "</tr>\n";
+        //}
+    ?>
+
 		</div>
 
      <?php include 'templates/footer.php'; ?>
