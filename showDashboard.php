@@ -41,7 +41,10 @@
             <ul>
             <li><label>Title: </label><input type="text" name="title" placeholder= ""required></li>
             <li><label>sID: </label>');
+
             $DBCObject->getStationID($djname);
+
+
 		echo('</li>
             <li><label>startTime: </label><input type="datetime-local" name="start"placeholder= ""required></li>
             <li><label>endTime: </label><input type="datetime-local" name="end"placeholder= ""required></li>
@@ -54,7 +57,9 @@
         echo('<form id="stationDash" action="delshow.php" method="post" >
         <ul>
         <li><label>Title </label>');
+
 		$DBCObject->getShowTitle($djname);
+
 		echo('</li>
         </ul>
         <input type="submit" name="formSubmit" value="Del Show"/>');
