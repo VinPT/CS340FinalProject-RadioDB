@@ -118,6 +118,25 @@
         return  $dbo;
 
     }
+	
+	public function getStationID($djname){
+		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
+        
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT sID FROM RadioStation WHERE StationManager = ?');
+
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+		
+		while($res = $stmt->fetch(PDO::FETCH_OBJ)->sID){
+			$selectout = $res;
+			echo "<option value = \"", $selectout, "\">", $selectout, "</option>\n";
+		}
+		echo "</select>";
+        return  TRUE;
+
+    }
 
     public function deleteRadioStation($djname){
         $DBH = $this->connect();
@@ -142,6 +161,25 @@
         $result = $stmt->fetchColumn();
         
         return $result;
+    }
+	
+	public function getShowTitle($djname){
+		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
+        
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT Title FROM Show WHERE StationManager = ?');
+
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+		
+		while($res = $stmt->fetch(PDO::FETCH_OBJ)->sID){
+			$selectout = $res;
+			echo "<option value = \"", $selectout, "\">", $selectout, "</option>\n";
+		}
+		echo "</select>";
+        return  TRUE;
+
     }
 
 	public function newShow($djname, $title, $stationID, $startTime, $endTime){
@@ -179,6 +217,25 @@
         return TRUE;
     }
     
+	public function getSongTitle($djname){
+		echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n";
+        
+        $DBH = $this->connect();
+        $stmt = $DBH->prepare('SELECT Title FROM Song WHERE StationManager = ?');
+
+        $stmt->bindParam(1, $djname);
+
+        $stmt->execute();
+		
+		while($res = $stmt->fetch(PDO::FETCH_OBJ)->sID){
+			$selectout = $res;
+			echo "<option value = \"", $selectout, "\">", $selectout, "</option>\n";
+		}
+		echo "</select>";
+        return  TRUE;
+
+    }
+	
     public function newSong($showtitle, $title, $artist, $startTime){
     
         $success = TRUE;

@@ -36,7 +36,7 @@
 				fake it (shouldn't be an issue for MariaDB driver):*/
 				PDO::ATTR_EMULATE_PREPARES => false,
 			);
-			echo "<select id = \"Station\" name = \"Station\">\n<option value = \"Station\">Station</option>\n";
+			echo "<form method=\"post\" action=\"index.php\">\n<select id = \"Station\" name = \"Station\">\n<option value = \"Station\">Station</option>\n";
 			
 			try {
 				$pdo = new PDO($dsn, $user, $pass, $opt);
@@ -49,7 +49,7 @@
 					echo "<option value = \"", $selectout, "\">", $selectout, "</option>\n";
 				}
 				echo "</select>";
-				}
+			}
 			catch (PDOException $e) {
 				$error_message = $e->getMessage();
 				echo $error_message;
@@ -67,7 +67,7 @@
 					echo "<option value = \"", $selectout, "\">", $selectout, "</option>\n";
 				}
 				echo "</select>";
-				}
+			}
 			catch (PDOException $e) {
 				$error_message = $e->getMessage();
 				echo $error_message;
@@ -91,6 +91,7 @@
 				echo $error_message;
 			}
 			?>
+			<input type="text" name="SongTitle" placeholder="Song Title to Search for"/>
 			<input type="submit" name="Submit" value="Submit"/>
 		</form>
 	
@@ -114,11 +115,13 @@
 						$template = $sql . " AND DJ.DJName LIKE \"%s\"";
 						$sql = sprintf($template, $_POST["DJ"]);
 					}
+					if(!empty($_POST["SongTitle"])){
+						$sql = $sql . " AND Song.Title LIKE \"%" . $_POST["SongTitle"] . "%\"";
+						//echo $sql;
+					}
 				}
 				
 				$stmt = $pdo->prepare($sql);
-				
-				//$res = $stmt->fetchObject()
 				
 				$stmt->execute();
 				
